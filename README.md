@@ -1,5 +1,7 @@
-This suite of scripts was designed for my research into mental health disorders, with the hope it might be re-used and developed on by other parties. 
+<b>Sentiment Analysis in Depressed Populations</b>
 
-At the time of development, no tools were available so building this was both time consuming and difficult (pre-chatgpt). 
+This suite of scripts were designed for my research into mental health disorders and have been adapted since their use, with the hope it might be re-used and developed on by other parties.
 
-If you do use this code and/or improve upon it, any shoutouts and or citations would be greatly appreciated. I am open to connections via Linked-in.
+If you find a use for this code and/or improve upon it, any shoutouts and or citations would be greatly appreciated. 
+
+I am always open to connections via Linked-in.
