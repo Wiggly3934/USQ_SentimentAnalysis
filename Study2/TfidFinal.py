@@ -6,13 +6,11 @@ from sklearn.metrics import accuracy_score, classification_report
 from nltk.corpus import stopwords
 import nltk
 
+#==============================
 # Function to preprocess and split the data
 def preprocess_and_split_data(excel_file_path):
     # Download NLTK stopwords
     nltk.download('stopwords')
-
-    # Load data from Excel file
-    excel_file_path = '/Users/User/Desktop/Highest Ranking Model/Research_Results_27.12.23.xlsm'
 
     # Read the entire dataset
     full_dataset = pd.concat(pd.read_excel(excel_file_path, sheet_name=None), ignore_index=True)
@@ -43,6 +41,7 @@ def preprocess_and_split_data(excel_file_path):
 
     return X_train, X_test, y_train, y_test
 
+#==============================
 # Function to get top N related words and their coefficients for each class
 def get_top_words_and_coefficients(vectorizer, model, class_label, top_n=10):
     feature_names = vectorizer.get_feature_names_out()
@@ -58,6 +57,7 @@ def get_top_words_and_coefficients(vectorizer, model, class_label, top_n=10):
 
     return top_words, top_coefficients
 
+#==============================
 # Function to evaluate the relationship using TF-IDF and Logistic Regression
 def evaluate_relationship(X_train, X_test, y_train, y_test):
     # Define custom stopwords
@@ -98,10 +98,11 @@ def evaluate_relationship(X_train, X_test, y_train, y_test):
     accuracy = accuracy_score(y_test, predictions)
     classification_rep = classification_report(y_test, predictions)
 
-    print(f"\nAccuracy: {accuracy}")
+    print(f"\nAccuracy: {accuracy:.2f}")
     print("\nClassification Report:")
     print(classification_rep)
 
+#==============================
 # Main script
 excel_file_path = '/Users/User/Desktop/Highest Ranking Model/Research_Results_27.12.23.xlsm'
 X_train, X_test, y_train, y_test = preprocess_and_split_data(excel_file_path)

@@ -4,16 +4,22 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import pickle
 
+#==============================
 # Load the pre-trained model
 loaded_model = tf.keras.models.load_model('/Users/User/Desktop/Highest Ranking Model/2500/CNN-R_Train45_Even_Final_2500posts_150words.h5')  # Update the path
 
+#==============================
 # Load the tokenizer
 tokenizer_path = '/Users/User/Desktop/Highest Ranking Model/2500/CNN-R_Train45_Even_tokenizer_2500posts_150words.pkl'  # Update the path
 with open(tokenizer_path, 'rb') as pickle_file:
     tokenizer = pickle.load(pickle_file)
 
+#==============================
 # Function to preprocess CSV data and make predictions
 def label_csv_file(input_csv_file, output_csv_file, tokenizer):
+    """
+    Preprocess the CSV data, make predictions using the pre-trained model, and save the results with predicted labels.
+    """
     # Load the CSV file
     df = pd.read_csv(input_csv_file)  # Adjust the read_csv parameters as needed
 
@@ -22,7 +28,7 @@ def label_csv_file(input_csv_file, output_csv_file, tokenizer):
     df = df[df['posts'].apply(lambda x: isinstance(x, str))]
 
     # Preprocess the CSV data
-    max_sequence_length = 150  # Make sure it matches the sequence length used during training
+    max_sequence_length = 150  # Ensure this matches the sequence length used during training
 
     # Assuming the text data is in a column named 'posts'
     X_csv_sequences = tokenizer.texts_to_sequences(df['posts'])
@@ -44,9 +50,11 @@ def label_csv_file(input_csv_file, output_csv_file, tokenizer):
 
     print("CSV labeling complete.")
 
+#==============================
 # Specify the input and output CSV file paths
 input_csv_file = '/Users/User/Documents/reddit_anonymous/reddit_comment_research.csv'
 output_csv_file = '/Users/User/Desktop/Trial_Research_Results_27.12.23.csv'
 
+#==============================
 # Label the CSV file
 label_csv_file(input_csv_file, output_csv_file, tokenizer)
